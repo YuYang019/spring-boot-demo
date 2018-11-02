@@ -31,5 +31,4 @@ public class OrderDetail {
 
     private String productIcon;
 
-    private List<OrderDetail> orderDetailList;
 }

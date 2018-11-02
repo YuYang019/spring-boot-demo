@@ -35,5 +35,5 @@ public class OrderDTO {
 
     private Date updateTime;
 
-    List<OrderDetail> orderDetailList;
+    List<CartDTO> cartDTOList;
 }

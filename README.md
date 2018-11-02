@@ -60,7 +60,7 @@ create table `order_detail` (
 
 ## API 设计（未完成）
 
-### /sell/product/list 商品列表
+### GET  /sell/product/list  商品列表
 
 返回格式
 
@@ -86,6 +86,31 @@ create table `order_detail` (
 }
 ```
 
+### POST  /sell/buyer/order/create 创建订单
+
+参数
+```
+name: "张三"
+phone: "1232838212"
+address: "北京"
+openid: "124123123"
+items: [{
+    productId: "12312321",
+    productQuantity: 2
+}]
+```
+
+返回格式
+
+```
+{
+    code: 0,
+    msg: "成功",
+    data: {
+        orderId: "1121312413"
+    }
+}
+```
 
 
 
