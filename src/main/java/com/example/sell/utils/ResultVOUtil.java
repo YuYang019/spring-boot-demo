@@ -4,7 +4,7 @@ import com.example.sell.service.VO.ResultVO;
 
 /**
  * @Author: maoyuyang
- * @Description:
+ * @Description: 数据返回的最外层格式对象
  * @Date: 11:34 18/11/1
  */
 public class ResultVOUtil {

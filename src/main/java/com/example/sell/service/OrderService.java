@@ -1,6 +1,7 @@
 package com.example.sell.service;
 
 import com.example.sell.dto.OrderDTO;
+import org.hibernate.criterion.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,11 +22,11 @@ public interface OrderService {
     Page<OrderDTO> findList(String buyerOpenid, Pageable pageable);
 
     // 取消订单
-    OrderDTO cancel(String orderId);
+    OrderDTO cancel(OrderDTO orderDTO);
 
     // 完结订单
-    OrderDTO finish(String orderId);
+    OrderDTO finish(OrderDTO orderDTO);
 
     // 支付订单
-    OrderDTO paid(String orderId);
+    OrderDTO paid(OrderDTO orderDTO);
 }

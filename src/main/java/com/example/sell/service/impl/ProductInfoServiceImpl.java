@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * 商品信息service
+ */
 @Service
 public class ProductInfoServiceImpl implements ProductInfoService {
 
@@ -27,14 +30,25 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     }
 
     @Override
+    @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
 
+        for (CartDTO cartDTO : cartDTOList) {
+            ProductInfo productInfo = repository.findById(cartDTO.getProductId()).get();
+            if (productInfo == null) {
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+            }
+            Integer stock = productInfo.getProductStock() + cartDTO.getProductQuantity();
+            productInfo.setProductStock(stock);
 
+            repository.save(productInfo);
+        }
     }
 
     @Override
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
+        // 遍历购物车，对每个商品，先查询具体信息，然后减库存
         for (CartDTO cartDTO : cartDTOList) {
             ProductInfo productInfo = repository.findById(cartDTO.getProductId()).get();
             if (productInfo == null) {
